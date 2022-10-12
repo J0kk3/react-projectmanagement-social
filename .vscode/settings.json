@@ -1,3 +1,4 @@
+/* DO NOT USE UNLESS AGREED UPON
 {
     "editor.bracketPairColorization.independentColorPoolPerBracketType": true,
     "editor.bracketPairColorization.enabled": true,
@@ -10,3 +11,4 @@
     "typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBrackets": true,
     "css.format.spaceAroundSelectorSeparator": true
 }
+*/
