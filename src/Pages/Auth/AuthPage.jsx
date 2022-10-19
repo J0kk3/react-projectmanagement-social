@@ -1,4 +1,8 @@
+/*****************
+IDEA:
+have login/register as a modal instead of seperate pages
 
+/*****************/
 
 const AuthPage = () =>
 {

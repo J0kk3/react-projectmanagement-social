@@ -1,32 +1,33 @@
-//actual links in the navbar
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
+//style
+import classes from "./Nav.module.css";
 
-const NavLinks = () =>
+const NavLinkComponent = () =>
 {
     return (
         <nav>
             <ul>
                 <li>
-                    <Link to="/">Register</Link>
+                    <NavLink end className={( navData ) =>  navData.isActive ? classes.active : "" } to="/">Register</NavLink>
                 </li>
                 <li>
-                    <Link to="/Home">Home</Link>
+                    <NavLink end className={( navData ) =>  navData.isActive ? classes.active : "" } to="/Home">Home</NavLink>
                 </li>
                 <li>
-                    <Link to="/Profile">Profile</Link>
+                    <NavLink end className={( navData ) =>  navData.isActive ? classes.active : "" } to="/Profile">Profile</NavLink>
                 </li>
                 <li>
-                    <Link to="/ProjectCreate">Create Project</Link>
+                    <NavLink end className={( navData ) =>  navData.isActive ? classes.active : "" } to="/ProjectCreate">Create Project</NavLink>
                 </li>
                 <li>
-                    <Link to="/ProjectManage">Manage Project</Link>
+                    <NavLink end className={( navData ) =>  navData.isActive ? classes.active : "" } to="/ProjectManage">Manage Project</NavLink>
                 </li>
                 <li>
-                    <Link to="/Search">Search</Link>
+                    <NavLink end className={( navData ) =>  navData.isActive ? classes.active : "" } to="/Search">Search</NavLink>
                 </li>
             </ul>
         </nav>
     );
 };
 
-export default NavLinks;
+export default NavLinkComponent;
