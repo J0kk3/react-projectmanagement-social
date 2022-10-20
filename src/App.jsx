@@ -24,6 +24,7 @@ const App = () =>
           <Route path="/ProjectCreate" element={ <ProjectCreate /> } />
           <Route path="/ProjectManage" element={ <ProjectManage /> } />
           <Route path="/Search" element={ <Search /> } />
+          <Route path="/" render={ () => <Redirect to="/" /> } />
         </Routes>
       </main>
     </div>
