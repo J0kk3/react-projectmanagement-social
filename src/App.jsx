@@ -10,6 +10,7 @@ import ProjectCreate from "./Pages/ProjectCreate/ProjectCreate";
 import ProjectManage from "./Pages/ProjectManage/ProjectManage";
 import Search from "./Pages/Search/Search";
 
+//TODO: hide some routes if not authenticated
 const App = () =>
 {
   return (
