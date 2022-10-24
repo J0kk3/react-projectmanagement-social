@@ -3,6 +3,7 @@ IDEA:
 have login/register as a modal instead of seperate pages
 
 /*****************/
+import { Link } from "react-router-dom";
 //hooks
 import { useState } from "react";
 //components
@@ -40,7 +41,7 @@ const AuthPage = () =>
                     <label htmlFor="password">Password</label>
                     <input type="password" id="password" placeholder="Pasword" />
                     <button className="buttonLogin">Log in</button>
-                    <p>Forgot your password?</p>
+                    <Link className="forgotPasswordLink" to="">Forgot your password?</Link>
                     <hr />
                     <button className="buttonRegister" onClick={ showModal }>Create new account</button>
                 </form>
