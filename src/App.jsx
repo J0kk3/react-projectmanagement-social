@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, Navigate } from "react-router-dom";
 //components
 import MainHeader from "./Components/Nav/MainHeader";
 //pages
@@ -25,7 +25,7 @@ const App = () =>
           <Route path="/ProjectCreate" element={ <ProjectCreate /> } />
           <Route path="/ProjectManage" element={ <ProjectManage /> } />
           <Route path="/Search" element={ <Search /> } />
-          <Route path="/" render={ () => <Redirect to="/" /> } />
+          <Route path="*" element={ <Navigate to="/" replace /> } />
         </Routes>
       </main>
     </div>
