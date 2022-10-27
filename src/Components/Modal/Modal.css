@@ -94,7 +94,7 @@ button:hover {
     border-right: solid 1px black;
 }
 
-.closeRegisterDiv {
+.closeModal {
     height: 1.5rem;
     cursor: pointer;
 }
