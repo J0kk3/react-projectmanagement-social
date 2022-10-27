@@ -1,10 +1,7 @@
 //hooks
 import { useState } from "react";
 //components
-import AuthLogin from "../../Components/Auth/AuthLogin";
-import AuthSignup from "../../Components/Auth/AuthSignup";
-import Modal from "../../Components/Modal/Modal";
-import Backdrop from "../../Components/Modal/Backdrop";
+import AuthForm from "../../Components/Auth/AuthForm";
 //styles
 import './AuthPage.css';
 
@@ -30,13 +27,9 @@ const AuthPage = () =>
                 <p className="pageUnderTitle">Purpose of site</p>
             </div>
             <>
-                <AuthLogin showModal={ showModal } />
+                <AuthForm modalIsOpen={ modalIsOpen } showModal={ showModal } closeModal={ closeModal } setModalIsOpen={ setModalIsOpen } />
                 <p className="registerMessage">Cool text or whatever</p>
             </>
-            { modalIsOpen && <Modal title={ "Sign Up" } modalIsOpen={ modalIsOpen } showModal={ showModal } closeModal={ closeModal } >
-                <AuthSignup />
-            </Modal> }
-            { modalIsOpen ? ( <Backdrop show closeModal={ closeModal } /> ) : null }
         </>
     );
 };

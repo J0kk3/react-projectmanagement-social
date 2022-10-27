@@ -90,10 +90,3 @@ hr {
     text-align: center;
     margin-right: 15.5rem;
 }
-
-.forgotPasswordLink {
-    display: block;
-    margin-top: 0.25rem;
-    font-size: 14px;
-    cursor: pointer;
-}
