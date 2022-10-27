@@ -10,7 +10,6 @@ import './AuthPage.css';
 
 const AuthPage = () =>
 {
-    //const [ isLogin, setIsLogin ] = useState( true );
     const [ modalIsOpen, setModalIsOpen ] = useState( false );
 
     const showModal = e =>

@@ -1,7 +1,8 @@
 
-
 const AuthSignup = () =>
 {
+    const registerKey = process.env.REACT_APP_API_KEY_REGISTER_URL;
+
     const registerHandler = e =>
     {
         e.preventDefault();
