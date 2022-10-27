@@ -1,9 +1,12 @@
-
+//styles
+import classes from './Home.module.css';
 
 const Home = () =>
 {
     return (
-        <h1>The Home Page</h1>
+        <section className={ classes.starting }>
+            <h1>Welcome Home!</h1>
+        </section>
     );
 };
 

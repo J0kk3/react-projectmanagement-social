@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
+//components
+import UserProfile from "../../Components/Profile/UserProfile";
 
-const Profile = () =>
+const ProfilePage = () =>
 {
     return (
         <section>
@@ -17,8 +19,9 @@ const Profile = () =>
                     <Link to="user2">USER 2</Link>
                 </li>
             </ul>
+            <UserProfile />;
         </section>
     );
 };
 
-export default Profile;
+export default ProfilePage;

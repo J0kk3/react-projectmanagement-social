@@ -4,7 +4,7 @@ import MainHeader from "./Components/Nav/MainHeader";
 //pages
 import Home from "./Pages/Home/Home";
 import AuthPage from "./Pages/Auth/AuthPage";
-import Profile from "./Pages/Profile/Profile";
+import ProfilePage from "./Pages/Profile/ProfilePage";
 import ProfileDetail from "./Pages/Profile/ProfileDetail";
 import ProjectCreate from "./Pages/ProjectCreate/ProjectCreate";
 import ProjectManage from "./Pages/ProjectManage/ProjectManage";
@@ -20,7 +20,7 @@ const App = () =>
         <Routes>
           <Route path="/" element={ <AuthPage /> } />
           <Route path="/Home" element={ <Home /> } />
-          <Route path="/Profile" element={ <Profile /> } />
+          <Route path="/Profile" element={ <ProfilePage /> } />
           <Route path="/Profile/:profileId" element={ <ProfileDetail /> } />
           <Route path="/ProjectCreate" element={ <ProjectCreate /> } />
           <Route path="/ProjectManage" element={ <ProjectManage /> } />
