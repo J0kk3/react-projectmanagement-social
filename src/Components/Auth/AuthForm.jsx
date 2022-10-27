@@ -1,8 +1,9 @@
 
 import { Link } from "react-router-dom";
 //hooks
-import { useRef, useState } from "react";
+import { useRef, useState, useContext } from "react";
 //components
+import AuthContext from "../../store/auth-context";
 //import Modal from "../Modal/Modal";
 // import Backdrop from "../Modal/Backdrop";
 //styles
@@ -18,6 +19,8 @@ const AuthForm = props =>
 
     const emailInputRef = useRef();
     const passwordInputRef = useRef();
+
+    const authCtx = useContext( AuthContext );
 
     const switchAuthModeHandler = () =>
     {
@@ -80,8 +83,8 @@ const AuthForm = props =>
             }
         } ).then( data =>
         {
-            //SUCCESSFUL REQUEST
-            console.log( data );
+            //SUCCESSFUL REQUEST & USER IS AUTHENTICATED
+            authCtx.login( data.idToken );
         } )
             .catch( ( err ) =>
             {
@@ -101,10 +104,10 @@ const AuthForm = props =>
                     <label htmlFor="password">Your Password</label>
                     <input type="password" id="password" placeholder="Pasword" required ref={ passwordInputRef } />
                 </div>
-                <div className={classes.actions}>
+                <div className={ classes.actions }>
                     { !isLoading && <button className={ isLogin ? classes.buttonLogin : classes.buttonRegister }>{ isLogin ? "Login" : "Create Account" }</button> }
                     { isLoading && <p>Sending Request...</p> }
-                    <Link className={classes.forgotPasswordLink} to="">Forgot your password?</Link>
+                    <Link className={ classes.forgotPasswordLink } to="">Forgot your password?</Link>
                     <button type="button" className={ classes.toggle } onClick={ switchAuthModeHandler }>
                         { isLogin ? 'Create new account' : 'Login with existing account' }
                     </button>
