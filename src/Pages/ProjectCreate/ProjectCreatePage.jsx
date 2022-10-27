@@ -1,10 +1,10 @@
 
 
-const ProjectCreate = () =>
+const ProjectCreatePage = () =>
 {
     return (
         <h1>The ProjectCreate Page</h1>
     );
 };
 
-export default ProjectCreate;
+export default ProjectCreatePage;

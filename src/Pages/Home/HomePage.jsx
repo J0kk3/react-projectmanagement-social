@@ -1,7 +1,7 @@
 //styles
 import classes from './Home.module.css';
 
-const Home = () =>
+const HomePage = () =>
 {
     return (
         <section className={ classes.starting }>
@@ -10,4 +10,4 @@ const Home = () =>
     );
 };
 
-export default Home;
+export default HomePage;

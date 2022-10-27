@@ -11,6 +11,12 @@ const NavLinkComponent = () =>
 
     const isLoggedIn = authCtx.isLoggedIn;
 
+    const logoutHandler = () =>
+    {
+        authCtx.logout();
+        //optional: redirect user
+    };
+
     return (
         <nav>
             <ul>
@@ -46,7 +52,7 @@ const NavLinkComponent = () =>
                 ) }
                 { isLoggedIn && (
                     <li>
-                        <button>Logout</button>
+                        <button onClick={ logoutHandler }>Logout</button>
                     </li>
                 ) }
             </ul>

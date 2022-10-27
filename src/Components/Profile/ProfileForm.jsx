@@ -1,5 +1,6 @@
 //hooks
 import { useRef, useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
 //components
 import AuthContext from '../../store/auth-context';
 //styles
@@ -8,6 +9,8 @@ import classes from './ProfileForm.module.css';
 const ProfileForm = () =>
 {
     const changePasswordKey = process.env.REACT_APP_API_KEY_CHANGEPASSWORD_URL;
+
+    const navigate = useNavigate();
 
     const newPasswordInputRef = useRef();
     const authCtx = useContext( AuthContext );
@@ -32,6 +35,12 @@ const ProfileForm = () =>
                 {
                     "Content-Type": "application/json"
                 }
+            } ).then( res =>
+            {
+                //ASSUMPTION: ALWAYS SUCCEEDS
+                //TODO: HANDLE ERRORS
+                //Redirect to "Profile"
+                navigate( "/Profile" );
             } );
     };
 

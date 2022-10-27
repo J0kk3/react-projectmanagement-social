@@ -2,6 +2,7 @@
 import { Link } from "react-router-dom";
 //hooks
 import { useRef, useState, useContext } from "react";
+import { useNavigate } from "react-router-dom";
 //components
 import AuthContext from "../../store/auth-context";
 //import Modal from "../Modal/Modal";
@@ -14,13 +15,17 @@ const AuthForm = props =>
     const loginKey = process.env.REACT_APP_API_KEY_LOGIN_URL;
     const registerKey = process.env.REACT_APP_API_KEY_REGISTER_URL;
 
-    const [ isLogin, setIsLogin ] = useState( true );
-    const [ isLoading, setIsLoading ] = useState( false );
+    const navigate = useNavigate();
+
+    const authCtx = useContext( AuthContext );
 
     const emailInputRef = useRef();
     const passwordInputRef = useRef();
 
-    const authCtx = useContext( AuthContext );
+    const [ isLogin, setIsLogin ] = useState( true );
+    const [ isLoading, setIsLoading ] = useState( false );
+
+
 
     const switchAuthModeHandler = () =>
     {
@@ -85,6 +90,8 @@ const AuthForm = props =>
         {
             //SUCCESSFUL REQUEST & USER IS AUTHENTICATED
             authCtx.login( data.idToken );
+            //Redirect to "Home"
+            navigate.replace( "/HomePage" );
         } )
             .catch( ( err ) =>
             {

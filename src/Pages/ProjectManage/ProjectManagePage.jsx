@@ -1,10 +1,10 @@
 
 
-const ProjectManage = () =>
+const ProjectManagePage = () =>
 {
     return (
         <h1>The ProjectManage Page</h1>
     );
 };
 
-export default ProjectManage;
+export default ProjectManagePage;
