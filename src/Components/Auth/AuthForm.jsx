@@ -89,7 +89,8 @@ const AuthForm = props =>
         } ).then( data =>
         {
             //SUCCESSFUL REQUEST & USER IS AUTHENTICATED
-            authCtx.login( data.idToken );
+            const expirationTime = new Date( new Date().getTime() + ( +data.expiresIn * 1000 ) );
+            authCtx.login( data.idToken, expirationTime.toISOString() );
             //Redirect to "Home"
             navigate.replace( "/HomePage" );
         } )

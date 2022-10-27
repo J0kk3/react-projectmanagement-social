@@ -1,6 +1,8 @@
 import React from "react";
 //hooks
-import { useState } from "react";
+import { useState, useEffect, useCallback } from "react";
+
+let logoutTimer;
 
 const AuthContext = React.createContext(
     {
@@ -10,24 +12,83 @@ const AuthContext = React.createContext(
         Logout: () => { },
     } );
 
+const calculateRemainingTime = ( expirationTime ) =>
+{
+    const currentTime = new Date().getTime();
+    const adjExpirationTime = new Date( expirationTime ).getTime();
+
+    const remainingDuration = adjExpirationTime - currentTime;
+
+    return remainingDuration;
+};
+
+const retrieveStoredToken = () =>
+{
+    const storedToken = localStorage.getItem( 'token' );
+    const storedExpirationDate = localStorage.getItem( 'expirationTime' );
+
+    const remainingTime = calculateRemainingTime( storedExpirationDate );
+    //if token has 1 minute or less time left, remove it
+    if ( remainingTime <= 60000 )
+    {
+        localStorage.removeItem( 'token' );
+        localStorage.removeItem( 'expirationTime' );
+        return null;
+    }
+
+    return {
+        token: storedToken,
+        duration: remainingTime,
+    };
+};
+
 //Managing the auth-related state
 export const AuthContextProvider = ( props ) =>
 {
+    const tokenData = retrieveStoredToken();
+    let initialToken;
+    if ( tokenData )
+    {
+        //JWT token already stored in local storage
+        initialToken = tokenData.token;
+    }
     //JWT token state
-    const [ token, setToken ] = useState( null );
+    const [ token, setToken ] = useState( initialToken );
 
     //converts truthy or falsy values to true or false
     const userIsLoggedIn = !!token;
 
-    const loginHandler = ( token ) =>
-    {
-        setToken( token );
-    };
-
-    const logoutHandler = () =>
+    const logoutHandler = useCallback( () =>
     {
         setToken( null );
+        localStorage.removeItem( 'token' );
+        localStorage.removeItem( 'expirationTime' );
+
+        if ( logoutTimer )
+        {
+            clearTimeout( logoutTimer );
+        }
+    }, [] );
+
+    const loginHandler = ( token, expirationTime ) =>
+    {
+        setToken( token );
+        localStorage.setItem( 'token', token );
+        localStorage.setItem( "expirationTime", expirationTime );
+
+        const remainingTime = calculateRemainingTime( expirationTime );
+        //logout after 1 hour
+        logoutTimer = setTimeout( logoutHandler, remainingTime );
     };
+    //if token changes, which it should only do initially. If true, set timer to logout after 1h
+    useEffect( () =>
+    {
+        if ( tokenData )
+        {
+            logoutTimer = setTimeout( logoutHandler, tokenData.duration );
+            console.log( tokenData.duration );
+        }
+    }, [ tokenData, logoutHandler ] );
 
     const contextValue =
     {
