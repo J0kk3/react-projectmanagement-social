@@ -24,12 +24,12 @@ const App = () =>
       <main>
         <Routes>
           { !authCtx.isLoggedIn && <Route path="/" element={ <AuthPage /> } />}
-          <Route path="/Home" element={ <HomePage /> } />
-          { authCtx.isLoggedIn && <Route path="/Profile" element={ authCtx.isLoggedIn ? <ProfilePage /> : <Navigate to="/" /> } />}
-          <Route path="/Profile/:profileId" element={ <ProfileDetailPage /> } />
-          <Route path="/ProjectCreate" element={ <ProjectCreatePage /> } />
-          <Route path="/ProjectManage" element={ <ProjectManagePage /> } />
-          <Route path="/Search" element={ <SearchPage /> } />
+          <Route path="/homepage" element={ <HomePage /> } />
+          { authCtx.isLoggedIn && <Route path="/profile" element={ authCtx.isLoggedIn ? <ProfilePage /> : <Navigate to="/" /> } />}
+          <Route path="/profile/:profileid" element={ <ProfileDetailPage /> } />
+          <Route path="/projectcreate" element={ <ProjectCreatePage /> } />
+          <Route path="/projectmanage" element={ <ProjectManagePage /> } />
+          <Route path="/search" element={ <SearchPage /> } />
           <Route path="*" element={ <Navigate to="/" replace /> } />
         </Routes>
       </main>
