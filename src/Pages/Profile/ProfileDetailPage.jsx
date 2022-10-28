@@ -3,7 +3,7 @@
 //hooks
 import { useParams } from "react-router-dom";
 
-const ProfileDetail = () =>
+const ProfileDetailPage = () =>
 {
     const params = useParams();
     // let { profileId } = params;
@@ -19,4 +19,4 @@ const ProfileDetail = () =>
     );
 };
 
-export default ProfileDetail;
+export default ProfileDetailPage;

@@ -1,0 +1,88 @@
+hr {
+    border: 0;
+    border-bottom: 1px solid #eaeaea;
+    margin: 32px 0;
+}
+
+.actions {
+    margin-top: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.actions .buttonLogin {
+    cursor: pointer;
+    outline: none;
+    color: #000;
+    background-color: #fff;
+    border: 1px solid #000;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: 600;
+    height: 48px;
+    letter-spacing: 0.5px;
+    line-height: 48px;
+    margin: 0 auto;
+    max-width: 200px;
+    text-align: center;
+    text-transform: uppercase;
+    transition: background-color 0.2s ease-in, color 0.2s ease-in;
+    width: 100%;
+}
+
+.actions .buttonRegister {
+    cursor: pointer;
+    font: inherit;
+    outline: none;
+    color: #fff;
+    background-color: #000;
+    border: 1px solid #000;
+    border-radius: 4px;
+    width: 100%;
+    height: 4rem;
+    max-width: 200px;
+    padding: 0.5rem 1.5rem;
+    margin: 0 auto;
+    font-size: 16px;
+    text-transform: uppercase;
+    text-align: center;
+    line-height: 48px;
+    transition: background-color 0.2s ease-in, color 0.2s ease-in;
+}
+
+.actions .buttonLogin:hover {
+    /* background-color: #d6d6d6; */
+    background-color: #c3ddff;
+    /* border-color: #fff; */
+    box-shadow: 1px 2px 1px rgba(0, 0, 0, 0.12), 0 0 4px rgba(0, 0, 0, 0.24);
+}
+
+.actions .buttonRegister:hover {
+    background-color: rgb(234, 234, 234);
+    color: #000;
+    border-color: #fff;
+    box-shadow: 1px 2px 1px rgba(0, 0, 0, 0.12), 0 0 4px rgba(0, 0, 0, 0.24);
+}
+
+.actions .toggle {
+    font-size: 12px;
+    font-weight: bold;
+    margin-top: 1rem;
+    background-color: transparent;
+    color: #044599;
+    border: none;
+    padding: 0.15rem 1.5rem;
+}
+
+.actions .toggle:hover {
+    background-color: transparent;
+    color: #4084de;
+}
+
+.forgotPasswordLink {
+    display: block;
+    margin-top: 0.25rem;
+    font-size: 14px;
+    cursor: pointer;
+}

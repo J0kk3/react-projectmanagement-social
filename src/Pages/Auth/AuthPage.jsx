@@ -1,20 +1,12 @@
-/*****************
-IDEA:
-have login/register as a modal instead of seperate pages
-
-/*****************/
-import { Link } from "react-router-dom";
 //hooks
 import { useState } from "react";
 //components
-import Modal from "../../Components/Modal/Modal";
-import Backdrop from "../../Components/Modal/Backdrop";
+import AuthForm from "../../Components/Auth/AuthForm";
 //styles
 import './AuthPage.css';
 
 const AuthPage = () =>
 {
-    //const [ isLogin, setIsLogin ] = useState( true );
     const [ modalIsOpen, setModalIsOpen ] = useState( false );
 
     const showModal = e =>
@@ -34,21 +26,10 @@ const AuthPage = () =>
                 <h1 className="pageTitle">Name of site</h1>
                 <p className="pageUnderTitle">Purpose of site</p>
             </div>
-            <div>
-                <form className="card">
-                    <label htmlFor="email">Email</label>
-                    <input type="email" id="email" placeholder="E-mail" />
-                    <label htmlFor="password">Password</label>
-                    <input type="password" id="password" placeholder="Pasword" />
-                    <button className="buttonLogin">Log in</button>
-                    <Link className="forgotPasswordLink" to="">Forgot your password?</Link>
-                    <hr />
-                    <button className="buttonRegister" onClick={ showModal }>Create new account</button>
-                </form>
+            <>
+                <AuthForm modalIsOpen={ modalIsOpen } showModal={ showModal } closeModal={ closeModal } setModalIsOpen={ setModalIsOpen } />
                 <p className="registerMessage">Cool text or whatever</p>
-            </div>
-            { modalIsOpen && <Modal title={ "Sign Up" } modalIsOpen={ modalIsOpen } showModal={ showModal } closeModal={ closeModal } /> }
-            { modalIsOpen ? ( <Backdrop show closeModal={ closeModal } /> ) : null }
+            </>
         </>
     );
 };
