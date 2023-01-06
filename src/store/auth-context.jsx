@@ -1,16 +1,13 @@
-import React from "react";
-//hooks
-import { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect, useCallback } from 'react';
 
 let logoutTimer;
 
-const AuthContext = React.createContext(
-    {
-        token: '',
-        isLoggedIn: false,
-        Login: ( token ) => { },
-        Logout: () => { },
-    } );
+const AuthContext = React.createContext( {
+    token: '',
+    isLoggedIn: false,
+    login: ( token ) => { },
+    logout: () => { },
+} );
 
 const calculateRemainingTime = ( expirationTime ) =>
 {
@@ -41,11 +38,11 @@ const retrieveStoredToken = () =>
         duration: remainingTime,
     };
 };
-
 //Managing the auth-related state
 export const AuthContextProvider = ( props ) =>
 {
     const tokenData = retrieveStoredToken();
+
     let initialToken;
     if ( tokenData )
     {
@@ -54,7 +51,6 @@ export const AuthContextProvider = ( props ) =>
     }
     //JWT token state
     const [ token, setToken ] = useState( initialToken );
-
     //converts truthy or falsy values to true or false
     const userIsLoggedIn = !!token;
 
@@ -74,7 +70,7 @@ export const AuthContextProvider = ( props ) =>
     {
         setToken( token );
         localStorage.setItem( 'token', token );
-        localStorage.setItem( "expirationTime", expirationTime );
+        localStorage.setItem( 'expirationTime', expirationTime );
 
         const remainingTime = calculateRemainingTime( expirationTime );
         //logout after 1 hour
@@ -85,20 +81,23 @@ export const AuthContextProvider = ( props ) =>
     {
         if ( tokenData )
         {
-            logoutTimer = setTimeout( logoutHandler, tokenData.duration );
             console.log( tokenData.duration );
+            logoutTimer = setTimeout( logoutHandler, tokenData.duration );
         }
-    }, [ tokenData, logoutHandler ] );
+    }, [tokenData, logoutHandler ] );
 
-    const contextValue =
-    {
+    const contextValue = {
         token: token,
         isLoggedIn: userIsLoggedIn,
         login: loginHandler,
         logout: logoutHandler,
     };
 
-    return <AuthContext.Provider value={ contextValue }>{ props.children }</AuthContext.Provider>;
+    return (
+        <AuthContext.Provider value={ contextValue }>
+            { props.children }
+        </AuthContext.Provider>
+    );
 };
 
 export default AuthContext;

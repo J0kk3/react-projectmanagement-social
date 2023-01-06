@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 //components
 import AuthContext from '../../store/auth-context';
 //style
@@ -8,13 +8,15 @@ import classes from "./Nav.module.css";
 const NavLinkComponent = () =>
 {
     const authCtx = useContext( AuthContext );
+    const navigate = useNavigate();
 
     const isLoggedIn = authCtx.isLoggedIn;
 
     const logoutHandler = () =>
     {
         authCtx.logout();
-        //optional: redirect user
+        //REDIRECT WHEN LOGGED OUT
+        navigate("/");
     };
 
     return (
@@ -27,27 +29,27 @@ const NavLinkComponent = () =>
                 ) }
                 { isLoggedIn && (
                     <li>
-                        <NavLink end className={ ( navData ) => navData.isActive ? classes.active : "" } to="/Home">Home</NavLink>
+                        <NavLink end className={ ( navData ) => navData.isActive ? classes.active : "" } to="/homepage">Home</NavLink>
                     </li>
                 ) }
                 { isLoggedIn && (
                     <li>
-                        <NavLink end className={ ( navData ) => navData.isActive ? classes.active : "" } to="/Profile">Profile</NavLink>
+                        <NavLink end className={ ( navData ) => navData.isActive ? classes.active : "" } to="/profile">Profile</NavLink>
                     </li>
                 ) }
                 { isLoggedIn && (
                     <li>
-                        <NavLink end className={ ( navData ) => navData.isActive ? classes.active : "" } to="/ProjectCreate">Create Project</NavLink>
+                        <NavLink end className={ ( navData ) => navData.isActive ? classes.active : "" } to="/projectcreate">Create Project</NavLink>
                     </li>
                 ) }
                 { isLoggedIn && (
                     <li>
-                        <NavLink end className={ ( navData ) => navData.isActive ? classes.active : "" } to="/ProjectManage">Manage Project</NavLink>
+                        <NavLink end className={ ( navData ) => navData.isActive ? classes.active : "" } to="/projectmanage">Manage Project</NavLink>
                     </li>
                 ) }
                 { isLoggedIn && (
                     <li>
-                        <NavLink end className={ ( navData ) => navData.isActive ? classes.active : "" } to="/Search">Search</NavLink>
+                        <NavLink end className={ ( navData ) => navData.isActive ? classes.active : "" } to="/search">Search</NavLink>
                     </li>
                 ) }
                 { isLoggedIn && (
